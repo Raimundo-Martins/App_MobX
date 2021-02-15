@@ -1,4 +1,4 @@
-# todomobx
+# Aplicativo utilizando o MobX
 
 A new Flutter application.
 
