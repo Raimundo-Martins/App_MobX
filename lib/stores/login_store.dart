@@ -5,9 +5,6 @@ part 'login_store.g.dart';
 class LoginStore = _LoginStore with _$LoginStore;
 
 abstract class _LoginStore with Store {
-  _LoginStore() {
-    autorun((_) {});
-  }
 
   @observable
   String email = '';
@@ -38,8 +35,12 @@ abstract class _LoginStore with Store {
     loading = true;
 
     loading = false;
+    loggedIn = true;
   }
 
   @computed
   Function get loginPressed => (isFormValid && !loading) ? login : null;
+
+  @observable
+  bool loggedIn = false;
 }
