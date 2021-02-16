@@ -5,7 +5,6 @@ part 'login_store.g.dart';
 class LoginStore = _LoginStore with _$LoginStore;
 
 abstract class _LoginStore with Store {
-
   @observable
   String email = '';
 
@@ -36,6 +35,9 @@ abstract class _LoginStore with Store {
 
     loading = false;
     loggedIn = true;
+
+    email = '';
+    senha = '';
   }
 
   @computed
@@ -43,4 +45,7 @@ abstract class _LoginStore with Store {
 
   @observable
   bool loggedIn = false;
+
+  @action
+  void logout() => loggedIn = false;
 }
