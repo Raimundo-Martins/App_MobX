@@ -9,6 +9,21 @@ part of 'login_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$LoginStore on _LoginStore, Store {
+  Computed<bool> _$isFormValidComputed;
+
+  @override
+  bool get isFormValid =>
+      (_$isFormValidComputed ??= Computed<bool>(() => super.isFormValid,
+              name: '_LoginStore.isFormValid'))
+          .value;
+  Computed<Function> _$loginPressedComputed;
+
+  @override
+  Function get loginPressed =>
+      (_$loginPressedComputed ??= Computed<Function>(() => super.loginPressed,
+              name: '_LoginStore.loginPressed'))
+          .value;
+
   final _$emailAtom = Atom(name: '_LoginStore.email');
 
   @override
@@ -39,6 +54,36 @@ mixin _$LoginStore on _LoginStore, Store {
     });
   }
 
+  final _$senhaVisibleAtom = Atom(name: '_LoginStore.senhaVisible');
+
+  @override
+  bool get senhaVisible {
+    _$senhaVisibleAtom.reportRead();
+    return super.senhaVisible;
+  }
+
+  @override
+  set senhaVisible(bool value) {
+    _$senhaVisibleAtom.reportWrite(value, super.senhaVisible, () {
+      super.senhaVisible = value;
+    });
+  }
+
+  final _$loadingAtom = Atom(name: '_LoginStore.loading');
+
+  @override
+  bool get loading {
+    _$loadingAtom.reportRead();
+    return super.loading;
+  }
+
+  @override
+  set loading(bool value) {
+    _$loadingAtom.reportWrite(value, super.loading, () {
+      super.loading = value;
+    });
+  }
+
   final _$_LoginStoreActionController = ActionController(name: '_LoginStore');
 
   @override
@@ -64,10 +109,36 @@ mixin _$LoginStore on _LoginStore, Store {
   }
 
   @override
+  void toggleSenhaVisibility() {
+    final _$actionInfo = _$_LoginStoreActionController.startAction(
+        name: '_LoginStore.toggleSenhaVisibility');
+    try {
+      return super.toggleSenhaVisibility();
+    } finally {
+      _$_LoginStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void login() {
+    final _$actionInfo =
+        _$_LoginStoreActionController.startAction(name: '_LoginStore.login');
+    try {
+      return super.login();
+    } finally {
+      _$_LoginStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 email: ${email},
-senha: ${senha}
+senha: ${senha},
+senhaVisible: ${senhaVisible},
+loading: ${loading},
+isFormValid: ${isFormValid},
+loginPressed: ${loginPressed}
     ''';
   }
 }
