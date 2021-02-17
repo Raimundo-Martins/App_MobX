@@ -115,7 +115,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   valueColor:
                                       AlwaysStoppedAnimation(Colors.white),
                                 )
-                              : ('Login'),
+                              : Text('Login'),
                           color: Theme.of(context).primaryColor,
                           disabledColor:
                               Theme.of(context).primaryColor.withAlpha(100),
